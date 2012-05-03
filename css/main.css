@@ -13,3 +13,6 @@ html, body, #map{
     left: 50px;
     z-index: 9999;
 }
+@media handheld {
+    #buttons { font-size: 5em; }
+}
