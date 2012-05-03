@@ -1,4 +1,6 @@
 html, body, #map{
+    max-width: 980px;
+    max-height: 980px;
 	height: 100%;
 	width: 100%;
     padding: 0; 
@@ -12,4 +14,8 @@ html, body, #map{
     top: 12px;
     left: 50px;
     z-index: 9999;
+}
+@media handheld {
+    
+
 }
