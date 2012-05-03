@@ -1,16 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Open Street Maps</title>
-    <meta name="description" content="Open Street Maps">
-    <script type="text/javascript">
+	<head>
+		<meta charset="utf-8">
+		<title>Open Street Maps</title>
+		<meta name="description" content="Open Street Maps">
+		<link rel="stylesheet" href="css/leaflet.css">
+		<script type="text/javascript" src="js/leaflet-src.js"></script>
+		
+	</head>
+	<body>
+		<h1>omg maps!</h1>
+		<div id="map"></div>
+		<script type="text/javascript">
 
+			var map = new L.Map('map');
 
+			// create a CloudMade tile layer (or use other provider of your choice)
+			var cloudmade = new L.TileLayer('http://{s}.tile.cloudmade.com/c59737139dc84cc0b03f9c0b9f57e586/997/256/{z}/{x}/{y}.png', {
+			    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+			    maxZoom: 18
+			});
 
-    </script>
-  </head>
-  <body>
-    
-  </body>
+			// add the CloudMade layer to the map set the view to a given center and zoom
+			map.addLayer(cloudmade).setView(new L.LatLng(51.505, -0.09), 13);
+
+			// create a marker in the given location and add it to the map
+			var marker = new L.Marker(new L.LatLng(51.5, -0.09));
+			map.addLayer(marker);
+
+			// attach a given HTML content to the marker and immediately open it
+			marker.bindPopup("A pretty CSS3 popup.<br />Easily customizable.").openPopup();
+
+		</script>
+	</body>
 </html>
