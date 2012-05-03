@@ -18,8 +18,9 @@ window.onload=function(){
 
        var scriptTag = document.getElementById('geoSearchjsonp');
        if (scriptTag){
-            document.getElementsByTagName('HEAD')[0].removeChild(scriptTag);
+           scriptTag.parentNode.removeChild(scriptTag);
         }
+
         scriptTag = document.createElement('SCRIPT');
         scriptTag.id = 'geoSearchjsonp';
         scriptTag.src = "http://nominatim.openstreetmap.org/search?q="+
