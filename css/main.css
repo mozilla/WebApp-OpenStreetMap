@@ -9,7 +9,7 @@ html, body, #map{
 }
 #buttons {
     position: fixed;
-    top: 18px;
-    left: 60px;
+    top: 12px;
+    left: 50px;
     z-index: 9999;
 }
