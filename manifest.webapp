@@ -10,7 +10,7 @@
     "en-US": {
       "name": "OpenStreetMap",
       "description": "Gaia OpenStreetMap Client"
-    },
+    }
   },
   "default_locale": "en-US",
   "icons": {
