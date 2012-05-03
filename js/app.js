@@ -1,8 +1,4 @@
 window.onload=function(){
-    map.on('zoomend', function(zoom) {
-        settings.zoom = map.getZoom();
-    });
-
     document.getElementById('btnLocation').addEventListener('click', function(e) {
         if (navigator.geolocation) {  
             navigator.geolocation.getCurrentPosition(function(position) {  
