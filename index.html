@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="css/leaflet.css">
 		<link rel="stylesheet" href="css/main.css">
 		<script type="text/javascript" src="js/leaflet-src.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
 	</head>
 	<body>
         <ul id='buttons'>
@@ -14,6 +15,9 @@
         </ul>
 		<div id="map"></div>
 		<script type="text/javascript">
+            var settings = {
+                zoom: 13 // this should be changed after zoom on the map will be changed
+            }
 
 			var map = new L.Map('map');
 
@@ -23,16 +27,12 @@
 			    maxZoom: 18
 			});
 
-            if (navigator.geolocation) {  
-                navigator.geolocation.getCurrentPosition(function(position) {  
-                  // add the CloudMade layer to the map set the view to a given center and zoom
-                  map.addLayer(cloudmade).setView(new L.LatLng(position.coords.latitude, position.coords.longitude), 13);
+              // add the CloudMade layer to the map set the view to a given center and zoom
+              map.addLayer(cloudmade).setView(new L.LatLng(0,0), settings.zoom);
 
-                  // create a marker in the given location and add it to the map
-                  var marker = new L.Marker(new L.LatLng(position.coords.latitude, position.coords.longitude));
-                  map.addLayer(marker);
-                });
-            }
+              // create a marker in the given location and add it to the map
+              var marker = new L.Marker(new L.LatLng(position.coords.latitude, position.coords.longitude));
+              map.addLayer(marker);
 
 
 			// attach a given HTML content to the marker and immediately open it
