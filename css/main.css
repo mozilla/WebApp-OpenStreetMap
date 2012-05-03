@@ -1,7 +1,13 @@
 #map{
-	height: 200px;
-	width: 300px;
+	height: 500px;
+	width: 500px;
 }
 .spinner {
     background: #fff url(../images/spinner.gif) 50% 50% no-repeat;
+}
+#buttons {
+    position: fixed;
+    top: 18px;
+    left: 60px;
+    z-index: 9999;
 }
