@@ -4,8 +4,11 @@ window.onload=function(){
     });
 
     document.getElementById('btnLocation').addEventListener('click', function(e) {
+        var mapEl = document.getElementById('map');
         if (navigator.geolocation) {  
+            mapEl.classList.add('spinner');
             navigator.geolocation.getCurrentPosition(function(position) {  
+                mapEl.classList.remove('spinner');
                 map.setView(new L.LatLng(position.coords.latitude, position.coords.longitude), settings.zoom);
                 if (!map.currentLocationMarker) {
                     // create a marker in the given location and add it to the map
