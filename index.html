@@ -1,39 +1,49 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>Open Street Maps</title>
-		<meta name="description" content="Open Street Maps">
-		<link rel="stylesheet" href="css/leaflet.css">
-		<link rel="stylesheet" href="css/main.css">
-		<script type="text/javascript" src="js/leaflet-src.js"></script>
-		<script type="text/javascript" src="js/app.js"></script>
-	</head>
-	<body>
+    <head>
+        <meta charset="utf-8">
+        <title>Open Street Maps</title>
+        <meta name="description" content="Open Street Maps">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script type="text/javascript" src="js/leaflet-src.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+    </head>
+    <body>
         <ul id='buttons'>
             <li id='mylocation'>my location</li>
         </ul>
-       <input type="text" id="txtSearch"/><button id="btnSearch">Find</button>
-		<div id="map"></div>
-		<script type="text/javascript">
+				<input type="text" id="txtSearch"/><button id="btnSearch">Find</button>
+        <div id="map"></div>
+        <script type="text/javascript">
             var settings = {
+                lat: localStorage.getItem('lastLat') || 0,
+                lng: localStorage.getItem('lastLng') || 0,
                 zoom: 13 // this should be changed after zoom on the map will be changed
             }
 
-			var map = new L.Map('map');
+            var map = new L.Map('map');
 
-			// create a CloudMade tile layer (or use other provider of your choice)
-			var cloudmade = new L.TileLayer('http://{s}.tile.cloudmade.com/c59737139dc84cc0b03f9c0b9f57e586/997/256/{z}/{x}/{y}.png', {
-			    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
-			    maxZoom: 18
-			});
+            // create a CloudMade tile layer (or use other provider of your choice)
+            var cloudmade = new L.TileLayer('http://{s}.tile.cloudmade.com/c59737139dc84cc0b03f9c0b9f57e586/997/256/{z}/{x}/{y}.png', {
+                attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+                maxZoom: 18
+            });
 
               // add the CloudMade layer to the map set the view to a given center and zoom
-              map.addLayer(cloudmade).setView(new L.LatLng(0,0), settings.zoom);
+              map.addLayer(cloudmade).setView(new L.LatLng(settings.lat, settings.lng), settings.zoom);
 
-			// attach a given HTML content to the marker and immediately open it
-			// marker.bindPopup("A pretty CSS3 popup.<br />Easily customizable.").openPopup();
 
-		</script>
-	</body>
+            // keep track of the viewport the user last viewed
+            map.on('moveend', function(e) {
+                var pos = map.getBounds().getCenter();
+                localStorage.setItem('lastLat', pos.lat);
+                localStorage.setItem('lastLng', pos.lng);
+            });
+
+            // attach a given HTML content to the marker and immediately open it
+            // marker.bindPopup("A pretty CSS3 popup.<br />Easily customizable.").openPopup();
+
+        </script>
+    </body>
 </html>
