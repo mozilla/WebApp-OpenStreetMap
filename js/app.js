@@ -1,8 +1,4 @@
 window.onload=function(){
-    map.on('zoomend', function(zoom) {
-        settings.zoom = map.getZoom();
-    });
-
     document.getElementById('btnLocation').addEventListener('click', function(e) {
         var mapEl = document.getElementById('map');
         if (navigator.geolocation) {  
@@ -30,8 +26,9 @@ window.onload=function(){
 
        var scriptTag = document.getElementById('geoSearchjsonp');
        if (scriptTag){
-            document.getElementsByTagName('HEAD')[0].removeChild(scriptTag);
+           scriptTag.parentNode.removeChild(scriptTag);
         }
+
         scriptTag = document.createElement('SCRIPT');
         scriptTag.id = 'geoSearchjsonp';
         scriptTag.src = "http://nominatim.openstreetmap.org/search?q="+

@@ -19,9 +19,9 @@
         <div id="map"></div>
         <script type="text/javascript">
             var settings = {
-                lat: localStorage.getItem('lastLat') || 0,
-                lng: localStorage.getItem('lastLng') || 0,
-                zoom: 13 // this should be changed after zoom on the map will be changed
+                lat: localStorage.getItem('lastLat') || 37.37779161,
+                lng: localStorage.getItem('lastLng') || -122.08110809,
+                zoom: localStorage.getItem('lastZoom') || 12 // this should be changed after zoom on the map will be changed
             }
 
             var map = new L.Map('map');
@@ -41,6 +41,10 @@
                 var pos = map.getBounds().getCenter();
                 localStorage.setItem('lastLat', pos.lat);
                 localStorage.setItem('lastLng', pos.lng);
+            });
+
+            map.on('zoomend', function(zoom) {
+                localStorage.setItem('lastZoom', map.getZoom());
             });
 
             // attach a given HTML content to the marker and immediately open it
