@@ -1,7 +1,7 @@
 {
   "name": "OpenStreetMap",
   "description": "Gaia OpenStreetMap Client",
-  "launch_path": "./",
+  "launch_path": "http://mozilla.github.com/WebDev-OpenStreetMap",
   "developer": {
     "name": "WebDev HackDay MapTeam",
     "url": "https://github.com/mozilla/WebDev-OpenStreetMap"
@@ -14,6 +14,6 @@
   },
   "default_locale": "en-US",
   "icons": {
-    "120": "./style/icons/OpenStreetMap.png"
+    "120": "http://mozilla.github.com/WebDev-OpenStreetMap/style/icons/OpenStreetMap.png"
   }
 }
