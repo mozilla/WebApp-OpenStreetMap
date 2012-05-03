@@ -37,6 +37,10 @@ window.onload=function(){
         document.getElementsByTagName('HEAD')[0].appendChild(scriptTag);
 
     });
+
+    if (!mozApps.isRunning()) {
+        mozApps.install();
+    }
     
 };
 
