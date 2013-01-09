@@ -1,7 +1,7 @@
 {
   "name": "OpenStreetMap",
   "description": "Gaia OpenStreetMap Client",
-  "launch_path": "/WebApp-OpenStreetMap/index.html",
+  "launch_path": "/WebApp-OpenStreetMap/",
   "developer": {
     "name": "WebDev HackDay MapTeam",
     "url": "https://github.com/mozilla/WebApp-OpenStreetMap"
